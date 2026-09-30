@@ -249,3 +249,101 @@ footer{background:#050a09;border-color:rgba(255,255,255,.1)}footer p,footer a{co
 
 /* keep the hero from showing the old illustration rules */
 .hero-scroll,.hero-sticky,.travel-bus,.bus-stage{display:none!important}
+
+
+
+/* PEYE TOURS · cleaner agency typography + real destination carousel */
+body{font-family:"Manrope",sans-serif}
+.hero-agency h1,.section-head h2,.about h2,.contact h2,.feature-copy h2,.tour h3,.modal-content h2{
+  font-family:"Barlow Condensed",sans-serif;
+  font-style:italic;
+  font-weight:800;
+  letter-spacing:-.025em;
+}
+.hero-agency h1{font-size:clamp(72px,7.2vw,112px);line-height:.78;letter-spacing:-.035em}
+.hero-agency h1 em{font-size:.52em;line-height:.98;margin-top:18px}
+.hero-agency-copy>p{font-size:16px;max-width:500px}
+.hero-kicker{font-family:"Manrope",sans-serif}
+
+.hero-carousel{
+  position:absolute;z-index:7;top:0;left:4%;right:0;height:360px;
+  overflow:visible;
+}
+.hero-route-card{
+  position:absolute;top:0;left:0;right:0;height:335px;
+  display:flex;align-items:flex-start;gap:12px;padding:0 4px 25px;
+  overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;
+  scrollbar-width:none;transform:none!important;
+  scroll-behavior:smooth;
+}
+.hero-route-card::-webkit-scrollbar{display:none}
+.route-card{
+  scroll-snap-align:center;
+  width:160px;height:315px;flex:0 0 160px;
+  border-radius:24px;
+  transform:perspective(900px) rotateY(-10deg)!important;
+  opacity:.9;
+}
+.route-card.active{border-color:rgba(201,255,90,.7);opacity:1}
+.route-card:nth-child(2),.route-card:nth-child(3),.route-card:nth-child(4),.route-card:nth-child(5){
+  transform:perspective(900px) rotateY(-6deg)!important;
+}
+.hero-arrow{
+  z-index:20;top:48%;width:52px;height:52px;
+  border:1px solid rgba(255,255,255,.42);
+  background:rgba(4,10,9,.5);
+  box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+.hero-arrow-left{left:-18px}.hero-arrow-right{right:12px}
+.hero-slider-dots{z-index:20;bottom:-12px;position:absolute}
+.hero-slider-dots i{width:34px;height:4px;cursor:pointer}
+.hero-slider-dots i.on{background:var(--lime)}
+
+.hero-bus-wrap{
+  animation:busRoadMotion 2.8s ease-in-out infinite;
+  will-change:transform;
+}
+.hero-bus-photo{animation:busBodyMotion 1.35s ease-in-out infinite}
+@keyframes busRoadMotion{
+  0%,100%{transform:translate3d(0,0,0)}
+  50%{transform:translate3d(-7px,-4px,0)}
+}
+@keyframes busBodyMotion{
+  0%,100%{filter:brightness(.66) contrast(1.14) saturate(.78) drop-shadow(0 34px 28px rgba(0,0,0,.55))}
+  50%{filter:brightness(.72) contrast(1.16) saturate(.82) drop-shadow(0 42px 28px rgba(0,0,0,.5))}
+}
+.bus-branding{font-family:"Barlow Condensed",sans-serif;font-style:italic}
+
+@media(max-width:1050px){
+  .hero-agency h1{font-size:clamp(65px,9vw,94px)}
+  .hero-carousel{left:0;right:0}
+}
+@media(max-width:700px){
+  .hero-agency{height:145vh;min-height:0}
+  .hero-agency h1{font-size:68px;line-height:.78}
+  .hero-agency h1 em{font-size:.51em}
+  .hero-carousel{
+    top:0;left:0;right:0;height:265px;
+  }
+  .hero-route-card{
+    height:245px;
+    padding:0 calc(50vw - 74px) 12px;
+    gap:9px;
+  }
+  .route-card{
+    width:148px;height:225px;flex-basis:148px;
+    border-radius:20px;
+    transform:none!important;
+  }
+  .route-card strong{font-size:12px;top:17px;left:13px}
+  .route-card small{font-size:9px;top:38px;left:13px}
+  .hero-arrow{width:40px;height:40px;font-size:30px;top:45%}
+  .hero-arrow-left{left:8px}.hero-arrow-right{right:8px}
+  .hero-slider-dots{bottom:-8px;gap:7px}
+  .hero-slider-dots i{width:20px}
+  .hero-bus-wrap{width:116vw;right:-18%;bottom:1%;height:300px}
+  .hero-bus-photo{animation-duration:1.05s}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-bus-wrap,.hero-bus-photo{animation:none!important}
+}
