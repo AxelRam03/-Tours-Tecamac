@@ -94,54 +94,86 @@ if(busStage&&travelBus){
 }
 
 
-/* PEYE TOURS · hero motion v2
-   La composición permanece fija y el autobús responde suavemente al scroll,
-   sin desplazar el carrusel ni romper la jerarquía visual. */
+/* PEYE TOURS · immersive scroll scene
+   The bus is the moving protagonist: it enters from depth,
+   crosses the scene, grows toward the viewer, then leaves.
+   The text and destination cards stage the journey around it. */
 (() => {
-  const hero = document.querySelector('.hero-agency');
-  const busWrap = document.querySelector('.hero-bus-wrap');
-  const backdrop = document.querySelector('.hero-backdrop');
-  const glowA = document.querySelector('.hero-glow-a');
-  const glowB = document.querySelector('.hero-glow-b');
-  if (!hero || !busWrap) return;
+  const hero=document.querySelector('.hero-agency');
+  const busWrap=document.querySelector('.hero-bus-wrap');
+  const busBrand=document.querySelector('.bus-branding');
+  const copy=document.querySelector('.hero-agency-copy');
+  const carousel=document.querySelector('.hero-carousel');
+  const backdrop=document.querySelector('.hero-backdrop');
+  const glowA=document.querySelector('.hero-glow-a');
+  const glowB=document.querySelector('.hero-glow-b');
+  if(!hero||!busWrap)return;
 
-  let ticking = false;
-  const clamp = (n,a,b) => Math.max(a,Math.min(b,n));
+  let ticking=false;
+  const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+  const easeInOut=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
 
-  function animateHero(){
-    const rect = hero.getBoundingClientRect();
-    const p = clamp((-rect.top) / Math.max(1, window.innerHeight * .9), 0, 1);
-    const ease = p * p * (3 - 2 * p);
+  function animate(){
+    const rect=hero.getBoundingClientRect();
+    const total=Math.max(1,hero.offsetHeight-window.innerHeight);
+    const p=clamp((-rect.top)/total,0,1);
 
-    /* Sólo el panel del autobús viaja unos píxeles al avanzar.
-       El carrusel conserva su posición para que no se amontone. */
-    busWrap.style.transform =
-      'translate3d(' + (ease * -34) + 'px,' + (ease * -10) + 'px,0)';
+    /* 0-.24: bus appears in the distance.
+       .24-.70: crosses the hero.
+       .70-1: exits toward the left, like a real transition. */
+    const enter=easeInOut(clamp(p/.24,0,1));
+    const cross=easeInOut(clamp((p-.18)/.52,0,1));
+    const exit=easeInOut(clamp((p-.68)/.32,0,1));
 
-    if (backdrop) {
-      backdrop.style.transform =
-        'scale(' + (1.04 + p * .018) + ') translate3d(' + (p * -10) + 'px,' + (p * -5) + 'px,0)';
+    const x=30-52*enter-34*cross-38*exit;
+    const y=7-4*enter-2*cross-9*exit;
+    const scale=.55+.22*enter+.38*cross+.12*exit;
+    const rotate=-4+2*enter+1*cross-3*exit;
+
+    busWrap.style.transform=
+      'translate3d('+x+'vw,'+y+'vh,0) scale('+scale+') rotate('+rotate+'deg)';
+
+    /* The destination strip moves opposite the bus to create depth. */
+    if(carousel){
+      const cx=-10*cross+24*exit;
+      const cy=6*cross-18*exit;
+      carousel.style.transform='translate3d('+cx+'vw,'+cy+'vh,0) scale('+(1+.035*cross)+')';
     }
-    if (glowA) glowA.style.transform =
-      'translate3d(' + (p * -25) + 'px,' + (p * 16) + 'px,0)';
-    if (glowB) glowB.style.transform =
-      'translate3d(' + (p * 20) + 'px,' + (p * -12) + 'px,0)';
 
-    ticking = false;
+    if(copy){
+      const opacity=1-clamp((p-.48)/.2,0,1);
+      const ty=-18*clamp((p-.38)/.32,0,1);
+      copy.style.opacity=opacity;
+      copy.style.transform='translate3d(0,'+ty+'px,0)';
+    }
+
+    if(busBrand){
+      const show=clamp((p-.35)/.2,0,1);
+      busBrand.style.opacity=show;
+      busBrand.style.transform='translateY('+(15-15*show)+'px)';
+    }
+
+    if(backdrop){
+      backdrop.style.transform=
+        'scale('+(1.04+.06*p)+') translate3d('+(p*-35)+'px,'+(p*-12)+'px,0)';
+    }
+    if(glowA)glowA.style.transform='translate3d('+(p*-70)+'px,'+(p*35)+'px,0)';
+    if(glowB)glowB.style.transform='translate3d('+(p*55)+'px,'+(p*-25)+'px,0)';
+
+    ticking=false;
   }
 
   function onScroll(){
     if(!ticking){
-      requestAnimationFrame(animateHero);
-      ticking = true;
+      requestAnimationFrame(animate);
+      ticking=true;
     }
   }
-
-  window.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', onScroll);
-  animateHero();
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  animate();
 })();
-
+ 
 /* Real destination carousel: arrows, dots, swipe and autoplay */
 (() => {
   const track=document.querySelector('#heroCarouselTrack');
