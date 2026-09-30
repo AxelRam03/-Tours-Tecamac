@@ -759,3 +759,111 @@ body{font-family:"Manrope",sans-serif}
   .hero-agency{height:100svh;min-height:720px}
   .hero-bus-wrap{transform:none!important}
 }
+
+/* PEYE CINEMATIC ROAD SCENE · scroll-controlled camera */
+.hero-agency{
+  height:205svh;
+  min-height:1450px;
+  background:#050807;
+}
+.hero-showcase{
+  position:absolute;
+  inset:0;
+  z-index:6;
+  pointer-events:none;
+}
+.hero-bus-wrap{
+  position:absolute;
+  z-index:5;
+  left:0;
+  top:0;
+  right:auto;
+  bottom:auto;
+  width:100vw;
+  height:100svh;
+  min-height:720px;
+  opacity:1;
+  transform:translate3d(0,0,0) scale(1);
+  transform-origin:50% 64%;
+  will-change:transform,filter;
+  filter:saturate(.92) contrast(1.08);
+  overflow:hidden;
+}
+.hero-bus-wrap:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:
+    linear-gradient(180deg,rgba(3,8,7,.62) 0%,rgba(3,8,7,.06) 28%,rgba(3,8,7,.02) 55%,rgba(3,8,7,.66) 100%),
+    radial-gradient(circle at 52% 58%,transparent 0%,rgba(0,0,0,.12) 45%,rgba(0,0,0,.55) 100%);
+  pointer-events:none;
+}
+.hero-bus-photo{
+  position:absolute;
+  inset:-4%;
+  width:108%;
+  height:108%;
+  border-radius:0;
+  object-fit:cover;
+  object-position:50% 58%;
+  filter:brightness(.64) contrast(1.14) saturate(.9);
+  transform:none!important;
+  animation:none!important;
+  -webkit-mask-image:none;
+  mask-image:none;
+}
+.hero-bus-halo,
+.bus-branding{display:none}
+.hero-agency-copy{
+  z-index:12;
+  top:26vh;
+  transition:none;
+}
+.hero-carousel{
+  z-index:12;
+  top:13vh;
+  transition:none;
+}
+.hero-scroll-hint{
+  z-index:15;
+  opacity:.9;
+}
+.hero-agency:after{
+  z-index:11;
+  height:34vh;
+  background:linear-gradient(180deg,transparent 0%,rgba(3,8,7,.12) 25%,rgba(3,8,7,.92) 100%);
+}
+.hero-road-caption{
+  position:absolute;
+  z-index:13;
+  left:6vw;
+  bottom:8vh;
+  color:#fff;
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:800;
+  opacity:.72;
+}
+.hero-road-caption i{
+  display:inline-block;
+  width:34px;
+  height:1px;
+  background:#c9ff5a;
+  vertical-align:middle;
+  margin:0 10px 3px 0;
+}
+@media(max-width:1050px){
+  .hero-agency{height:185svh;min-height:1250px}
+  .hero-bus-wrap{height:100svh;min-height:720px}
+  .hero-agency-copy{top:18vh}
+  .hero-carousel{top:54vh}
+}
+@media(max-width:700px){
+  .hero-agency{height:175svh;min-height:1120px}
+  .hero-bus-wrap{height:100svh;min-height:720px}
+  .hero-agency-copy{top:15vh}
+  .hero-carousel{top:48vh}
+  .hero-road-caption{left:5vw;bottom:9vh}
+}
