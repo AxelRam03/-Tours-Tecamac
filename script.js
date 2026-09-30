@@ -154,3 +154,44 @@ if(busStage&&travelBus){
   window.addEventListener('resize', onScroll);
   animateHero();
 })();
+
+
+/* Real destination carousel: arrows, dots, swipe and autoplay */
+(() => {
+  const track=document.querySelector('#heroCarouselTrack');
+  const cards=[...document.querySelectorAll('#heroCarouselTrack .route-card')];
+  const prev=document.querySelector('#heroPrev');
+  const next=document.querySelector('#heroNext');
+  const dots=[...document.querySelectorAll('#heroDots i')];
+  if(!track||!cards.length)return;
+  let index=0;
+  let timer;
+
+  function goTo(i){
+    index=(i+cards.length)%cards.length;
+    const card=cards[index];
+    const left=card.offsetLeft-(track.clientWidth-card.offsetWidth)/2;
+    track.scrollTo({left:Math.max(0,left),behavior:'smooth'});
+    cards.forEach((c,n)=>c.classList.toggle('active',n===index));
+    dots.forEach((d,n)=>d.classList.toggle('on',n===index));
+  }
+  function start(){
+    clearInterval(timer);
+    timer=setInterval(()=>goTo(index+1),4200);
+  }
+  prev?.addEventListener('click',()=>{goTo(index-1);start()});
+  next?.addEventListener('click',()=>{goTo(index+1);start()});
+  dots.forEach((d,n)=>d.addEventListener('click',()=>{goTo(n);start()}));
+  let downX=0;
+  track.addEventListener('touchstart',e=>{downX=e.touches[0].clientX;clearInterval(timer)},{passive:true});
+  track.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-downX;
+    if(Math.abs(dx)>45)goTo(index+(dx<0?1:-1));
+    start();
+  },{passive:true});
+  track.addEventListener('mouseenter',()=>clearInterval(timer));
+  track.addEventListener('mouseleave',start);
+  window.addEventListener('resize',()=>goTo(index));
+  goTo(0);
+  start();
+})();
