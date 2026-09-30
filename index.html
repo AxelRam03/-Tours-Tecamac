@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#17231f">
 <title>PEYE TOURS · Viajes desde Tecámac</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,600;1,700;1,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -38,21 +38,23 @@
   </div>
 
   <div class="hero-showcase">
-    <div class="hero-route-card">
-      <div class="route-card active"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=85" alt="Tecolutla"><strong>TECOLUTLA</strong><small>Playas</small></div>
-      <div class="route-card"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=700&q=85" alt="Real del Monte"><strong>REAL DEL MONTE</strong><small>Pueblos mágicos</small></div>
-      <div class="route-card"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=700&q=85" alt="Naturaleza"><strong>HUASTECA</strong><small>Naturaleza</small></div>
-      <div class="route-card"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=85" alt="Acapulco"><strong>ACAPULCO</strong><small>Playas</small></div>
-      <div class="route-card"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=700&q=85" alt="Valle de Bravo"><strong>VALLE DE BRAVO</strong><small>Aventura</small></div>
+    <div class="hero-carousel" aria-label="Destinos destacados">
+      <div class="hero-route-card" id="heroCarouselTrack">
+        <div class="route-card active"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=85" alt="Tecolutla"><strong>TECOLUTLA</strong><small>Playas</small></div>
+        <div class="route-card"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=700&q=85" alt="Real del Monte"><strong>REAL DEL MONTE</strong><small>Pueblos mágicos</small></div>
+        <div class="route-card"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=700&q=85" alt="Huasteca"><strong>HUASTECA</strong><small>Naturaleza</small></div>
+        <div class="route-card"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=85" alt="Acapulco"><strong>ACAPULCO</strong><small>Playas</small></div>
+        <div class="route-card"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=700&q=85" alt="Valle de Bravo"><strong>VALLE DE BRAVO</strong><small>Aventura</small></div>
+      </div>
+      <button class="hero-arrow hero-arrow-left" id="heroPrev" aria-label="Destino anterior">‹</button>
+      <button class="hero-arrow hero-arrow-right" id="heroNext" aria-label="Siguiente destino">›</button>
+      <div class="hero-slider-dots" id="heroDots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
     </div>
     <div class="hero-bus-wrap">
       <div class="hero-bus-halo"></div>
       <img class="hero-bus-photo" src="https://www.bushiremacau.com/assets/images/volvo971.png" alt="Autobús turístico en carretera">
       <div class="bus-branding">PEYE <b>TOURS</b><span>●</span></div>
     </div>
-    <button class="hero-arrow hero-arrow-left" aria-label="Destino anterior">‹</button>
-    <button class="hero-arrow hero-arrow-right" aria-label="Siguiente destino">›</button>
-    <div class="hero-slider-dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
   </div>
 
   <div class="hero-scroll-hint">↓ <span>Descubre las próximas salidas</span></div>
