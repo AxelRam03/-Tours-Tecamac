@@ -1,6 +1,5 @@
-// CONFIGURA AQUÍ EL WHATSAPP DEL NEGOCIO.
-// Ejemplo de formato: 5215512345678 (52 + lada + número, sin +, espacios ni guiones).
-const WHATSAPP_NUMBER = "";
+// WhatsApp oficial de DE PEYE TOURS.
+const WHATSAPP_NUMBER = "525573538114";
 
 const tours = [
  {name:"Tecolutla",type:"playa",tag:"PLAYA",meta:"Veracruz · Noviembre 2026",price:"$1,999",desc:"Mar, arena y descanso. Propuesta de fin de semana desde Tecámac.",img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"},
@@ -12,7 +11,6 @@ const tours = [
 ];
 
 const grid=document.querySelector("#tourGrid");
-const toast=document.querySelector("#toast");
 function render(filter="all"){
  grid.innerHTML=tours.filter(t=>filter==="all"||t.type===filter).map(t=>`
  <article class="tour">
@@ -24,11 +22,7 @@ function render(filter="all"){
  document.querySelectorAll(".reserve").forEach(b=>b.addEventListener("click",()=>reserve(b.dataset.tour)));
 }
 function reserve(tour){
- const message=`Hola, me interesa reservar el tour a ${tour}. Somos ___ personas y salimos desde Tecámac. Quisiera conocer disponibilidad, precio final, qué incluye y formas de pago.`;
- if(!WHATSAPP_NUMBER){
-   toast.textContent="Configura tu número de WhatsApp en script.js para activar las reservas.";
-   toast.classList.add("show"); setTimeout(()=>toast.classList.remove("show"),4200); return;
- }
+ const message=`Hola, DE PEYE TOURS. Me interesa reservar el tour a ${tour}. Somos ___ personas y salimos desde Tecámac. Quisiera conocer disponibilidad, precio final, qué incluye y formas de pago.`;
  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,"_blank");
 }
 document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");render(b.dataset.filter)}));
