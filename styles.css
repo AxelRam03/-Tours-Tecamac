@@ -1014,3 +1014,135 @@ body{font-family:"Manrope",sans-serif}
 .tour-img img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center;z-index:0}
 .tour-img-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.34) 100%);z-index:1;pointer-events:none}
 .tour-img .tag{z-index:2}
+
+
+/* PEYE TOURS · mobile carousel final responsive pass */
+@media (max-width:700px){
+  .hero-agency{
+    min-height:860px;
+    height:auto;
+    overflow:hidden;
+  }
+  .hero-agency-copy{
+    left:5vw;
+    right:5vw;
+    top:112px;
+    width:auto;
+  }
+  .hero-agency-copy h1{
+    font-size:clamp(43px,13vw,58px);
+    line-height:.9;
+  }
+  .hero-agency-copy p{
+    max-width:330px;
+    font-size:14px;
+    line-height:1.45;
+  }
+  .hero-actions{
+    gap:8px;
+  }
+  .hero-main-btn,.hero-outline-btn{
+    padding:12px 15px;
+    font-size:12px;
+  }
+  .hero-showcase{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:54px;
+    height:330px;
+    min-height:330px;
+  }
+  .hero-carousel{
+    left:12px;
+    right:12px;
+    bottom:0;
+    top:auto;
+    width:auto;
+    height:300px;
+    padding:0 0 28px;
+    border-radius:18px;
+    overflow:visible;
+  }
+  .hero-carousel-label{
+    top:-31px;
+    left:2px;
+    right:2px;
+    gap:7px;
+    font-size:8px;
+    white-space:nowrap;
+  }
+  .hero-carousel-label i{width:22px}
+  .hero-carousel-label small{font-size:7px}
+  .hero-route-card{
+    width:100%;
+    height:272px;
+    padding:0 38px;
+    gap:10px;
+    align-items:center;
+    overflow-x:auto;
+    scroll-padding-inline:38px;
+  }
+  .route-card,
+  .route-card.active{
+    flex:0 0 calc(100vw - 88px);
+    width:calc(100vw - 88px);
+    max-width:310px;
+    height:255px;
+    border-radius:18px;
+    transform:none;
+  }
+  .route-card:not(.active){
+    opacity:.48;
+  }
+  .route-card.active{
+    opacity:1;
+  }
+  .route-copy{
+    left:15px;
+    right:12px;
+    bottom:16px;
+  }
+  .route-copy strong{
+    font-size:25px;
+    line-height:.9;
+  }
+  .route-copy small{font-size:7px}
+  .route-index{top:13px;left:15px}
+  .route-go{
+    right:12px;
+    bottom:12px;
+    width:32px;
+    height:32px;
+  }
+  .hero-arrow{
+    width:42px;
+    height:42px;
+    top:50%;
+    margin-top:-21px;
+  }
+  .hero-arrow-left{left:5px}
+  .hero-arrow-right{right:5px}
+  .hero-slider-dots{
+    bottom:0;
+  }
+  .hero-slider-dots i{width:18px;height:2px}
+  .hero-slider-dots i.on{width:30px}
+  .hero-scroll-hint{
+    bottom:18px;
+    font-size:8px;
+  }
+}
+
+@media (max-width:380px){
+  .hero-agency-copy h1{font-size:42px}
+  .hero-main-btn,.hero-outline-btn{
+    padding:11px 12px;
+    font-size:11px;
+  }
+  .route-card,
+  .route-card.active{
+    flex-basis:calc(100vw - 72px);
+    width:calc(100vw - 72px);
+  }
+}
