@@ -89,6 +89,8 @@ render();
     const left=card.offsetLeft-(track.clientWidth-card.offsetWidth)/2;
     track.scrollTo({left:Math.max(0,left),behavior:'smooth'});
     cards.forEach((c,n)=>c.classList.toggle('active',n===index));
+    const backdrop=document.querySelector('.hero-backdrop');
+    if(backdrop && card.dataset.bg) backdrop.style.backgroundImage='url("'+card.dataset.bg+'")';
     dots.forEach((d,n)=>d.classList.toggle('on',n===index));
   }
   function start(){
