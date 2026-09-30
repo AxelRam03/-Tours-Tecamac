@@ -71,3 +71,24 @@ chatForm.addEventListener("submit",e=>{e.preventDefault();processMessage(chatInp
 document.querySelectorAll("[data-quick]").forEach(b=>b.addEventListener("click",()=>{openBot();setTimeout(()=>botChoose(b.dataset.quick),180)}));
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeModal();chat.classList.remove("open")}});
 render();
+
+/* Cinematic bus motion: reacts to page scroll */
+const busStage=document.querySelector("#busStage"),travelBus=document.querySelector("#travelBus");
+if(busStage&&travelBus){
+ let ticking=false;
+ const moveBus=()=>{
+   const r=busStage.getBoundingClientRect(), vh=window.innerHeight;
+   const progress=Math.max(0,Math.min(1,(vh*.72-r.top)/(vh*1.05)));
+   const x=(progress-.5)*170;
+   const y=25-progress*42;
+   const rotY=-4+progress*9;
+   const rotX=3-progress*4;
+   const scale=.9+progress*.18;
+   travelBus.style.transform="translate3d("+x+"px,"+y+"px,0) rotateX("+rotX+"deg) rotateY("+rotY+"deg) scale("+scale+")";
+   const shadow=document.querySelector(".bus-shadow");
+   if(shadow){shadow.style.transform="translateX("+x*.35+"px) scaleX("+(1+progress*.25)+") rotateX(68deg)";shadow.style.opacity=String(.75-progress*.3)}
+   ticking=false;
+ };
+ window.addEventListener("scroll",()=>{if(!ticking){requestAnimationFrame(moveBus);ticking=true}},{passive:true});
+ moveBus();
+}
