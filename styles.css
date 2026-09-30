@@ -867,3 +867,28 @@ body{font-family:"Manrope",sans-serif}
   .hero-carousel{top:48vh}
   .hero-road-caption{left:5vw;bottom:9vh}
 }
+
+
+/* PEYE TOURS · bus removed
+   Keep the hero focused on the destinations and travel offer. */
+.hero-agency{
+  height:100svh;
+  min-height:760px;
+}
+.hero-showcase{
+  pointer-events:auto;
+}
+.hero-bus-wrap{
+  display:none!important;
+}
+.hero-agency-copy,
+.hero-carousel{
+  transition:none;
+}
+@media(max-width:1050px){
+  .hero-agency{height:100svh;min-height:760px}
+}
+@media(max-width:700px){
+  .hero-agency{height:auto;min-height:820px}
+  .hero-showcase{min-height:470px}
+}
