@@ -537,3 +537,56 @@ body{font-family:"Manrope",sans-serif}
   from{opacity:0}
   to{opacity:1}
 }
+
+
+/* HERO v3 · spacing, depth and integrated bus */
+.hero-agency-copy{padding-left:1vw}
+.hero-showcase{padding-left:1vw}
+.hero-carousel{left:0;right:0;top:28px;height:285px}
+.hero-route-card{gap:12px;padding-left:18px;padding-right:18px}
+.route-card{width:132px;height:270px;flex-basis:132px;border-radius:21px}
+.route-card.active{transform:translateY(-8px) scale(1.035)!important;box-shadow:0 22px 48px rgba(0,0,0,.34)}
+.hero-bus-wrap{
+  width:min(660px,94%);
+  height:320px;
+  right:-1%;
+  bottom:-3%;
+  z-index:4;
+  isolation:isolate;
+}
+.hero-bus-wrap:after{
+  content:"";
+  position:absolute;
+  inset:-15% -10% -10% -10%;
+  z-index:-1;
+  background:radial-gradient(ellipse at 65% 65%,rgba(201,255,90,.16),transparent 58%);
+  filter:blur(24px);
+}
+.hero-bus-photo{
+  object-fit:cover;
+  object-position:center 58%;
+  border-radius:34px;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 92%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 15%,#000 88%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 92%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 15%,#000 88%,transparent 100%);
+  mask-composite:intersect;
+}
+.bus-branding{left:9%;bottom:9%;font-size:24px}
+.hero-scroll-hint{opacity:.72}
+
+/* Keep the bus motion subordinate to the layout */
+@keyframes busCruise{
+  0%,100%{transform:translate3d(0,0,0)}
+  50%{transform:translate3d(-5px,-2px,0)}
+}
+@media(max-width:1050px){
+  .hero-carousel{top:8px}
+  .hero-bus-wrap{width:min(700px,94vw);right:0;bottom:0}
+}
+@media(max-width:700px){
+  .hero-carousel{top:0}
+  .hero-route-card{gap:9px;padding-left:calc(50vw - 55px);padding-right:calc(50vw - 55px)}
+  .route-card.active{transform:translateY(-5px) scale(1.02)!important}
+  .hero-bus-wrap{width:104%;right:-2%;height:215px;bottom:-2%}
+  .hero-bus-photo{border-radius:22px;object-position:center 58%}
+}
