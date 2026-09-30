@@ -1,9 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 120" role="img" aria-labelledby="title">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-labelledby="title">
 <title id="title">PEYE TOURS</title>
-<rect width="430" height="120" rx="20" fill="#fffdf8"/>
-<text x="24" y="70" font-family="Arial,sans-serif" font-size="54" font-weight="900" letter-spacing="3" fill="#176b5c">PEYE</text>
-<text x="181" y="70" font-family="Arial,sans-serif" font-size="54" font-weight="900" letter-spacing="2" fill="#17231f">TOURS</text>
-<path d="M351 20c-24 0-41 18-41 41 0 29 41 50 41 50s41-21 41-50c0-23-17-41-41-41Z" fill="#e45f3e"/>
-<circle cx="351" cy="61" r="12" fill="#fffdf8"/>
-<text x="25" y="94" font-family="Arial,sans-serif" font-size="8" font-weight="800" letter-spacing="4" fill="#e45f3e">SINCE 2020 · TECÁMAC</text>
+<text x="8" y="70" font-family="Arial,Helvetica,sans-serif" font-size="57" font-weight="900" letter-spacing="2" fill="#f4f4ef">PEYE</text>
+<text x="171" y="70" font-family="Arial,Helvetica,sans-serif" font-size="57" font-weight="900" letter-spacing="1" fill="#f4f4ef">TOURS</text>
+<path d="M422 13c-27 0-46 20-46 46 0 31 46 54 46 54s46-23 46-54c0-26-19-46-46-46Z" fill="#c9ff5a"/>
+<circle cx="422" cy="59" r="13" fill="#07100f"/>
+<text x="10" y="96" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="800" letter-spacing="4" fill="#c9ff5a">SINCE 2020 · TECÁMAC</text>
 </svg>
