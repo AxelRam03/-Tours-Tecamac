@@ -527,3 +527,13 @@ body{font-family:"Manrope",sans-serif}
 @media(prefers-reduced-motion:reduce){
   .hero-bus-wrap,.hero-bus-photo{animation:none!important;opacity:1;transform:none}
 }
+
+/* Motion sync: JS controls panel position; CSS only handles its entrance opacity. */
+.hero-bus-wrap{
+  animation:busFadeIn .75s ease .15s both;
+  transition:transform .45s cubic-bezier(.2,.7,.2,1);
+}
+@keyframes busFadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
