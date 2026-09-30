@@ -892,3 +892,52 @@ body{font-family:"Manrope",sans-serif}
   .hero-agency{height:auto;min-height:820px}
   .hero-showcase{min-height:470px}
 }
+
+
+/* PEYE TOURS · dark destination carousel */
+.hero-carousel{
+  background:#050505;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:28px;
+  box-shadow:0 24px 70px rgba(0,0,0,.42);
+  padding:18px 18px 38px;
+  backdrop-filter:blur(10px);
+}
+.hero-route-card{
+  background:#050505;
+}
+.route-card{
+  background:#080808;
+  border-color:rgba(255,255,255,.10);
+  box-shadow:0 14px 34px rgba(0,0,0,.45);
+  overflow:hidden;
+}
+.route-card img{
+  opacity:.42;
+  filter:grayscale(.15) contrast(1.08) brightness(.72);
+  transition:opacity .35s ease,filter .35s ease,transform .35s ease;
+}
+.route-card:after{
+  background:linear-gradient(180deg,rgba(0,0,0,.20) 0%,rgba(0,0,0,.62) 48%,rgba(0,0,0,.96) 100%);
+}
+.route-card.active{
+  background:#000;
+  border-color:rgba(201,255,90,.65);
+}
+.route-card.active img{
+  opacity:.58;
+  filter:grayscale(.05) contrast(1.1) brightness(.78);
+}
+.hero-arrow{
+  background:#050505;
+  border-color:rgba(255,255,255,.22);
+}
+.hero-slider-dots i{
+  background:rgba(255,255,255,.20);
+}
+@media(max-width:700px){
+  .hero-carousel{
+    border-radius:22px;
+    padding:10px 10px 30px;
+  }
+}
