@@ -76,11 +76,21 @@
 
 <footer><a class="brand footer-brand" href="#inicio"><img src="logo.svg" alt="DE PEYE TOURS"></a><p>© 2026 DE PEYE TOURS · Todos los derechos reservados.</p><div><a href="#inicio">Inicio</a><a href="#tours">Escapadas</a><a href="#contacto">Contacto</a></div></footer>
 
-<button class="bot-launch" id="botLaunch" aria-label="Abrir asistente de viajes"><span>✦</span><b>PeyeBot</b><small>¿Te ayudo a elegir?</small></button>
+<button class="bot-launch" id="botLaunch" aria-label="Abrir PeyeBot">
+  <span class="bot-avatar">✦</span><span class="bot-launch-copy"><b>PeyeBot</b><small>Te ayudo a elegir viaje</small></span>
+  <span class="bot-online"></span>
+</button>
 <div class="chat" id="chat" aria-hidden="true">
-  <div class="chat-head"><div><strong>PeyeBot ✦</strong><span>Asistente de viajes</span></div><button id="chatClose" aria-label="Cerrar">×</button></div>
+  <div class="chat-head">
+    <div class="chat-profile"><span class="chat-avatar">✦</span><div><strong>PeyeBot</strong><span><i></i> En línea · DE PEYE TOURS</span></div></div>
+    <button id="chatClose" aria-label="Cerrar">×</button>
+  </div>
   <div class="chat-body" id="chatBody"></div>
   <div class="chat-options" id="chatOptions"></div>
+  <form class="chat-input" id="chatForm">
+    <input id="chatInput" autocomplete="off" placeholder="Escribe: “quiero playa”..." aria-label="Escribe tu mensaje">
+    <button type="submit" aria-label="Enviar">➤</button>
+  </form>
 </div>
 
 <script src="script.js"></script>
