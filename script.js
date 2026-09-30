@@ -94,71 +94,62 @@ if(busStage&&travelBus){
 }
 
 
-/* PEYE TOURS · immersive scroll scene
-   The bus is the moving protagonist: it enters from depth,
-   crosses the scene, grows toward the viewer, then leaves.
-   The text and destination cards stage the journey around it. */
+/* PEYE TOURS · cinematic road camera
+   Scroll is the camera: the complete travel scene starts wide,
+   then rushes toward the road so it feels like the trip is beginning. */
 (() => {
   const hero=document.querySelector('.hero-agency');
-  const busWrap=document.querySelector('.hero-bus-wrap');
-  const busBrand=document.querySelector('.bus-branding');
+  const scene=document.querySelector('.hero-bus-wrap');
   const copy=document.querySelector('.hero-agency-copy');
   const carousel=document.querySelector('.hero-carousel');
+  const hint=document.querySelector('.hero-scroll-hint');
   const backdrop=document.querySelector('.hero-backdrop');
   const glowA=document.querySelector('.hero-glow-a');
   const glowB=document.querySelector('.hero-glow-b');
-  if(!hero||!busWrap)return;
+  if(!hero||!scene)return;
 
   let ticking=false;
   const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
-  const easeInOut=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+  const smooth=t=>t*t*(3-2*t);
+  const ease=t=>1-Math.pow(1-t,3);
 
   function animate(){
     const rect=hero.getBoundingClientRect();
     const total=Math.max(1,hero.offsetHeight-window.innerHeight);
     const p=clamp((-rect.top)/total,0,1);
 
-    /* 0-.24: bus appears in the distance.
-       .24-.70: crosses the hero.
-       .70-1: exits toward the left, like a real transition. */
-    const enter=easeInOut(clamp(p/.24,0,1));
-    const cross=easeInOut(clamp((p-.18)/.52,0,1));
-    const exit=easeInOut(clamp((p-.68)/.32,0,1));
+    /* Camera movement: establish -> accelerate -> fly over the road -> reveal next section. */
+    const cam=smooth(clamp(p/.82,0,1));
+    const zoom=1+2.18*ease(cam);
+    const x=-3.5*ease(cam);
+    const y=-7.5*ease(cam);
+    const rotate=.35*ease(cam);
 
-    const x=30-52*enter-34*cross-38*exit;
-    const y=7-4*enter-2*cross-9*exit;
-    const scale=.55+.22*enter+.38*cross+.12*exit;
-    const rotate=-4+2*enter+1*cross-3*exit;
-
-    busWrap.style.transform=
-      'translate3d('+x+'vw,'+y+'vh,0) scale('+scale+') rotate('+rotate+'deg)';
-
-    /* The destination strip moves opposite the bus to create depth. */
-    if(carousel){
-      const cx=-10*cross+24*exit;
-      const cy=6*cross-18*exit;
-      carousel.style.transform='translate3d('+cx+'vw,'+cy+'vh,0) scale('+(1+.035*cross)+')';
-    }
+    scene.style.transform='translate3d('+x+'vw,'+y+'vh,0) scale('+zoom+') rotate('+rotate+'deg)';
+    scene.style.filter='saturate('+(0.92+.16*cam)+') contrast('+(1.08+.12*cam)+')';
 
     if(copy){
-      const opacity=1-clamp((p-.48)/.2,0,1);
-      const ty=-18*clamp((p-.38)/.32,0,1);
-      copy.style.opacity=opacity;
-      copy.style.transform='translate3d(0,'+ty+'px,0)';
+      const fade=1-clamp((p-.16)/.24,0,1);
+      const lift=-28*ease(clamp((p-.12)/.26,0,1));
+      copy.style.opacity=fade;
+      copy.style.transform='translate3d(0,'+lift+'px,0)';
     }
 
-    if(busBrand){
-      const show=clamp((p-.35)/.2,0,1);
-      busBrand.style.opacity=show;
-      busBrand.style.transform='translateY('+(15-15*show)+'px)';
+    if(carousel){
+      const fade=1-clamp((p-.12)/.24,0,1);
+      carousel.style.opacity=fade;
+      carousel.style.transform='translate3d(0,'+(-38*ease(clamp((p-.1)/.28,0,1)))+'px,0) scale('+(1+.06*cam)+')';
+    }
+
+    if(hint){
+      hint.style.opacity=String(1-clamp((p-.05)/.16,0,1));
     }
 
     if(backdrop){
-      backdrop.style.transform=
-        'scale('+(1.04+.06*p)+') translate3d('+(p*-35)+'px,'+(p*-12)+'px,0)';
+      backdrop.style.transform='scale('+(1.02+.11*cam)+') translate3d('+(p*-28)+'px,'+(p*-16)+'px,0)';
     }
-    if(glowA)glowA.style.transform='translate3d('+(p*-70)+'px,'+(p*35)+'px,0)';
-    if(glowB)glowB.style.transform='translate3d('+(p*55)+'px,'+(p*-25)+'px,0)';
+    if(glowA)glowA.style.transform='translate3d('+(p*-55)+'px,'+(p*28)+'px,0)';
+    if(glowB)glowB.style.transform='translate3d('+(p*45)+'px,'+(p*-18)+'px,0)';
 
     ticking=false;
   }
@@ -173,7 +164,7 @@ if(busStage&&travelBus){
   window.addEventListener('resize',onScroll);
   animate();
 })();
- 
+
 /* Real destination carousel: arrows, dots, swipe and autoplay */
 (() => {
   const track=document.querySelector('#heroCarouselTrack');
