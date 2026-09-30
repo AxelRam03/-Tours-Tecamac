@@ -972,3 +972,38 @@ body{font-family:"Manrope",sans-serif}
 .hero-trust{display:none!important}
 @media(max-width:1050px){.hero-carousel{right:1vw;width:56vw}.hero-route-card{padding-left:190px;padding-right:190px}}
 @media(max-width:700px){.hero-carousel{left:10px;right:10px;top:auto;bottom:100px;transform:none;width:auto;height:300px}.hero-carousel-label{top:-27px}.hero-route-card{height:285px;padding-left:calc(50vw - 125px);padding-right:calc(50vw - 125px);gap:10px}.route-card{flex-basis:145px;height:245px}.route-card.active{flex-basis:190px;height:275px}.route-copy strong{font-size:21px}}
+
+
+/* PEYE TOURS · final destination image + modal readability fix */
+.hero-backdrop{
+  background-image:url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Tecolutla%20Beach.jpg") !important;
+}
+.tour-img{
+  background-color:#101815;
+  background-size:cover !important;
+  background-position:center !important;
+  min-height:360px;
+}
+.tour-modal-card{
+  color:#17201d;
+}
+.tour-modal-card .modal-content h2{
+  color:#17201d !important;
+  font-family:"Barlow Condensed",Arial,sans-serif !important;
+  font-style:italic;
+  font-weight:800;
+}
+.tour-modal-card .modal-content h3{
+  color:#17201d !important;
+}
+.tour-modal-card .modal-content p,
+.tour-modal-card .modal-content span,
+.tour-modal-card .modal-content li{
+  color:#59645f;
+}
+.tour-modal-card .modal-facts span{
+  color:#17201d;
+}
+.tour-modal-card .route-stop b{
+  color:#fff;
+}
