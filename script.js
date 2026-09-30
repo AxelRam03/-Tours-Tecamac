@@ -92,3 +92,65 @@ if(busStage&&travelBus){
  window.addEventListener("scroll",()=>{if(!ticking){requestAnimationFrame(moveBus);ticking=true}},{passive:true});
  moveBus();
 }
+
+
+/* PEYE TOURS · scroll-driven hero animation */
+(() => {
+  const hero = document.querySelector('.hero-agency');
+  const bus = document.querySelector('.hero-bus-photo');
+  const busWrap = document.querySelector('.hero-bus-wrap');
+  const cards = document.querySelector('.hero-route-card');
+  const backdrop = document.querySelector('.hero-backdrop');
+  const glowA = document.querySelector('.hero-glow-a');
+  const glowB = document.querySelector('.hero-glow-b');
+  if (!hero || !bus) return;
+
+  let ticking = false;
+  const clamp = (n,a,b) => Math.max(a,Math.min(b,n));
+
+  function animateHero(){
+    const rect = hero.getBoundingClientRect();
+    const total = Math.max(1, hero.offsetHeight - window.innerHeight);
+    const p = clamp((-rect.top) / total, 0, 1);
+
+    // 0 → 0.55: bus arrives from the right. 0.55 → 1: it continues forward.
+    const arrive = clamp(p / .55, 0, 1);
+    const travel = clamp((p - .55) / .45, 0, 1);
+    const ease = arrive * arrive * (3 - 2 * arrive);
+
+    const x = 190 - ease * 190 - travel * 85;
+    const y = 90 - ease * 90 - travel * 20;
+    const scale = .72 + ease * .25 + travel * .10;
+    const ry = -14 + ease * 10 + travel * 4;
+    const rx = 2 - ease * 2;
+
+    bus.style.transform =
+      'translate3d('+x+'px,'+y+'px,0) perspective(900px) rotateY('+ry+'deg) rotateX('+rx+'deg) scale('+scale+')';
+
+    if (busWrap) {
+      busWrap.style.filter = 'brightness('+(0.82 + ease*.18)+')';
+    }
+    if (cards) {
+      const cardX = 80 - ease*80 - travel*28;
+      const cardY = -25 + ease*25 - travel*8;
+      cards.style.transform = 'translate3d('+cardX+'px,'+cardY+'px,0)';
+    }
+    if (backdrop) {
+      backdrop.style.transform = 'scale('+(1.04 + p*.035)+') translate3d('+(p*-18)+'px,'+(p*-8)+'px,0)';
+    }
+    if (glowA) glowA.style.transform = 'translate3d('+(p*-55)+'px,'+(p*35)+'px,0)';
+    if (glowB) glowB.style.transform = 'translate3d('+(p*40)+'px,'+(p*-25)+'px,0)';
+
+    ticking = false;
+  }
+
+  const onScroll = () => {
+    if (!ticking) {
+      requestAnimationFrame(animateHero);
+      ticking = true;
+    }
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  animateHero();
+})();
