@@ -941,3 +941,34 @@ body{font-family:"Manrope",sans-serif}
     padding:10px 10px 30px;
   }
 }
+
+
+/* PEYE TOURS - cinematic destination carousel */
+.hero-agency{overflow:hidden}
+.hero-backdrop{background-image:url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Tecolutla_Beach.jpg")!important;background-size:cover!important;background-position:center!important}
+.hero-carousel{position:absolute;left:auto;right:3.5vw;top:50%;transform:translateY(-47%);width:min(780px,52vw);height:480px;background:transparent;border:0;box-shadow:none;padding:0 0 38px;overflow:visible}
+.hero-carousel-label{position:absolute;top:-38px;left:8px;z-index:10;display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:.16em;font-weight:800;color:rgba(255,255,255,.72)}
+.hero-carousel-label i{width:38px;height:1px;background:var(--lime);display:block}
+.hero-carousel-label small{color:rgba(255,255,255,.38);font-size:8px;letter-spacing:.14em}
+.hero-route-card{height:430px;width:100%;display:flex;align-items:center;gap:16px;overflow-x:auto;overflow-y:visible;scroll-behavior:smooth;scroll-snap-type:x mandatory;padding:28px 260px 20px;box-sizing:border-box;scrollbar-width:none}
+.hero-route-card::-webkit-scrollbar{display:none}
+.route-card{position:relative;flex:0 0 205px;height:350px;border-radius:24px;border:1px solid rgba(255,255,255,.16);background:#080808;overflow:hidden;scroll-snap-align:center;opacity:.48;transform:translateY(18px) scale(.92);transition:all .45s cubic-bezier(.2,.75,.25,1);box-shadow:0 25px 55px rgba(0,0,0,.5)}
+.route-card img{width:100%;height:100%;object-fit:cover;opacity:.72;filter:saturate(.9) contrast(1.06) brightness(.72);transition:all .45s ease}
+.route-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08) 20%,rgba(0,0,0,.25) 46%,rgba(0,0,0,.94) 100%)}
+.route-card.active{flex-basis:245px;height:400px;opacity:1;transform:translateY(0) scale(1);border-color:rgba(201,255,90,.75);box-shadow:0 30px 70px rgba(0,0,0,.65)}
+.route-card.active img{opacity:.9;filter:saturate(1.05) contrast(1.08) brightness(.82);transform:scale(1.03)}
+.route-index{position:absolute;z-index:3;top:17px;left:18px;font-family:"Barlow Condensed",Arial,sans-serif;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.65)}
+.route-copy{position:absolute;z-index:3;left:18px;right:16px;bottom:22px;display:flex;flex-direction:column;gap:5px}
+.route-copy strong{font-family:"Barlow Condensed",Arial,sans-serif;font-style:italic;font-size:28px;line-height:.9;letter-spacing:.01em;color:#fff}
+.route-copy small{font-size:8px;letter-spacing:.13em;color:rgba(255,255,255,.72)}
+.route-go{position:absolute;z-index:4;right:16px;bottom:18px;width:34px;height:34px;border:1px solid rgba(255,255,255,.25);border-radius:50%;display:grid;place-items:center;color:#fff;font-size:15px;background:rgba(0,0,0,.22)}
+.route-card.active .route-go{background:var(--lime);color:#07100f;border-color:var(--lime)}
+.hero-arrow{z-index:12;width:52px;height:52px;background:rgba(4,5,5,.82);border:1px solid rgba(255,255,255,.24);box-shadow:0 12px 35px rgba(0,0,0,.45)}
+.hero-arrow:hover{background:var(--lime);color:#07100f;border-color:var(--lime)}
+.hero-arrow-left{left:8px}.hero-arrow-right{right:8px}
+.hero-slider-dots{bottom:4px;z-index:14;gap:7px}
+.hero-slider-dots i{width:24px;height:3px;background:rgba(255,255,255,.28);transition:all .3s ease}
+.hero-slider-dots i.on{width:42px;background:var(--lime)}
+.hero-trust{display:none!important}
+@media(max-width:1050px){.hero-carousel{right:1vw;width:56vw}.hero-route-card{padding-left:190px;padding-right:190px}}
+@media(max-width:700px){.hero-carousel{left:10px;right:10px;top:auto;bottom:100px;transform:none;width:auto;height:300px}.hero-carousel-label{top:-27px}.hero-route-card{height:285px;padding-left:calc(50vw - 125px);padding-right:calc(50vw - 125px);gap:10px}.route-card{flex-basis:145px;height:245px}.route-card.active{flex-basis:190px;height:275px}.route-copy strong{font-size:21px}}
