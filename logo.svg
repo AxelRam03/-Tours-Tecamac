@@ -1,14 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 170" role="img" aria-labelledby="title desc">
-<title id="title">DE PEYE TOURS</title><desc id="desc">Logo de DE PEYE TOURS, agencia de viajes de Tecámac</desc>
-<rect width="620" height="170" rx="28" fill="#fffdf8"/>
-<g transform="translate(32 24)">
-  <text x="0" y="56" font-family="Arial,sans-serif" font-size="48" font-weight="900" letter-spacing="2" fill="#146b5c">DE PEYE</text>
-  <text x="2" y="105" font-family="Arial,sans-serif" font-size="40" font-weight="900" letter-spacing="4" fill="#17231f">TOURS</text>
-  <text x="4" y="132" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="4" fill="#e36b3d">SINCE 2020 · TECÁMAC</text>
-</g>
-<g transform="translate(470 20)">
-  <path d="M58 4C27 4 5 27 5 56c0 38 53 77 53 77s53-39 53-77C111 27 89 4 58 4Z" fill="#e84b3d"/>
-  <circle cx="58" cy="55" r="17" fill="#fffdf8"/>
-  <path d="M58 34c-12 0-21 9-21 21 0 8 4 15 10 19l11 9 11-9c6-4 10-11 10-19 0-12-9-21-21-21Z" fill="none" stroke="#e84b3d" stroke-width="4"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 120" role="img" aria-labelledby="title">
+<title id="title">PEYE TOURS</title>
+<rect width="430" height="120" rx="20" fill="#fffdf8"/>
+<text x="24" y="70" font-family="Arial,sans-serif" font-size="54" font-weight="900" letter-spacing="3" fill="#176b5c">PEYE</text>
+<text x="181" y="70" font-family="Arial,sans-serif" font-size="54" font-weight="900" letter-spacing="2" fill="#17231f">TOURS</text>
+<path d="M351 20c-24 0-41 18-41 41 0 29 41 50 41 50s41-21 41-50c0-23-17-41-41-41Z" fill="#e45f3e"/>
+<circle cx="351" cy="61" r="12" fill="#fffdf8"/>
+<text x="25" y="94" font-family="Arial,sans-serif" font-size="8" font-weight="800" letter-spacing="4" fill="#e45f3e">SINCE 2020 · TECÁMAC</text>
 </svg>
